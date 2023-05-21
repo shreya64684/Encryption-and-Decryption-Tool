@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caeser Cipher</title>
+    
+</head>
+<body>
+    <div id="main">
+        <h1>Plain Text<span><img src="./arrow1.png"></span>Cipher Text</h1>
+        <h1 id="algo">Caeser Cipher</h1>
+        <div id="endec-div">
+            <h3 id="enc-btn"><span><img src="./lock.png">Encryption</span></h3>
+            <h4>OR</h4>
+            <h3 id="dec-btn"><span><img src="./unlock.png">Decryption</span></h3>
+        </div>
+        <div id="encryption">
+            <h5>Enter Plain Text</h5>
+            <textarea placeholder="Type plain text" name="" id="pltxt" cols="30" rows="10"></textarea>
+            <h5>Enter Shift Key</h5>
+            <input placeholder="Enter no. from 0 to 25" type="number" id="key" min="0" max="25">
+            <button id="encrypt-btn"><span><img src="./lock.png" alt="lock"></span>Encrypted Text</button>
+            <br>
+            <label>
+                <textarea type="text" id="encryptedinput-1" placeholder="Encryted Text will appear here..."></textarea>
+            </label>
+        </div>
+        <div id="decryption">
+            <h5>Enter Encrypted Text</h5>
+            <textarea placeholder="Type cipher text without space" name="" id="cptxt" cols="30" rows="10" style="width: 1473px; height: 287px" ></textarea>
+            <h5>Enter Shift Key</h5>
+            <input placeholder="Enter no. from 0 to 25" type="number" id="key">
+            <button id="decrypt-btn"><span><img src="./unlock.png" alt="unlock"></span>Plain Text</button>
+            <br>
+            <label>
+                <textarea type="text" id="decryptedinput-1" placeholder="Decrypted Text will appear here..."></textarea>
+            </label>
+        </div>
+        <script src="script.js">
+            let encryptBtn = document.getElementById('encrypt-btn');
+            let eInput = document.getElementById('encryptedinput-1');
+            let pInput = document.getElementById('pltxt');
+            let inputs = [eInput,pInput]
+            
+             inputs.forEach( input => {
+                 input.oninput = () => {
+                     input.value = input.value.toUpperCase()
+                 }
+            })
+            function encrypt(){
+                let pInput = document.getElementById('pltxt').value;
+                let solved = ''
+                let shiftInput = parseInt(document.getElementById('key').value)
+
+                for(var i=0; i< pInput.length; i++){
+                    let ascii_num = pInput[i].charCodeAt()
+                    let sum = ascii_num + shiftInput
+                    sum >= 65 && sum <= 90 ? solved += String.fromCharCode(sum) : sum > 90 ? solved += String.fromCharCode(65 + (sum & 91)) : solved += pInput[i]
+                }
+                eInput.value = solved
+            }
+            encryptBtn.addEventListener('click', encrypt)
+    
+
+
+        </script> 
+<style>
+*{
+    margin: 0;
+    padding:0;
+    box-sizing: border-box;
+    font-family: gilroy;
+
+}
+html,body{
+    height: 100%;
+    width: 100%;
+}
+#main{
+    height: 100%;
+    width: 100%;
+    background-color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    
+}
+#main>h1{
+    font-family: monospace;
+    color: white;
+    font-size: 48px;
+    display: flex;
+    align-items: center;
+    padding: 15px;
+}
+#main>h1>span{
+    margin: 0 15px;
+    display: flex;
+    align-items: center;
+}
+#main>h1>span>img{
+    height: 50px;
+    color: white;
+    transition: 0.3s ease;
+}
+#main>#endec-div{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: black;
+    font-family: monospace;
+    padding: 8px;
+    padding-bottom: 60px;
+}
+#main>#endec-div h4{
+    color: white;
+    padding-left: 10px;
+    padding-right: 10px; 
+    font-size: 30px;
+    
+}
+#main>#endec-div h3{
+    font-size: 40px;
+    color: whitesmoke;
+    font-family: monospace;
+    display: flex;
+    align-items: center;
+    border-radius: 8px;
+    font-weight: 500;
+    cursor: pointer;
+    padding: 12px 12px;
+    transform: 0.2s ease;
+}
+#endec-div h3 span{
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+}
+#endec-div h3 span img{
+    height: 40x;
+
+}
+#enc-btn{
+    background-color: grey;
+    display:block;
+    padding: 12px 8px;
+}
+
+#enc-btn>span img{
+    width: 40px;
+    height: 40px;
+    
+}
+#dec-btn {
+    background-color: #333;
+    display: block;
+    padding: 8px 8px;
+}
+#dec-btn img{
+    width: 40px;
+    height: 40px;
+}
+title{
+    color: white;
+}
+#encryption{
+    width: 45%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+}
+#encryption h5{
+    font-size: 40px;
+    font-weight: 500;
+    color: white;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+#encryption textarea{
+    width: 1548px;
+    height: 376px;
+    border: 1px solid #343434;
+    padding: 10px;
+    font-size: 50px;
+    margin-bottom: 50px;
+}
+#encryption input{
+    width: 1548px;
+    height: 100px;
+    border: 1px solid #343434;
+    padding: 10px;
+    font-size: 50px;
+    margin-bottom: 50px;
+}
+#encryption button{
+    display: flex;
+    align-items: center;
+    color: grey;
+    background-color: black;
+    border: none;
+    width: 100%;
+    justify-content: center;
+    font-size: 50px;
+    padding: 10px;
+    border-radius: 10px;
+    color: #eee;
+    font-size: 50px;
+    cursor: pointer;
+}
+button span{
+    display: flex;
+    margin-right: 10px;
+}  
+button img{
+    height: 50px;
+}
+#encryption #encryptedinput-1{
+    width: 1548px;
+    height: 200px;
+}
+#decryption{
+    width: 45%;
+    display: none;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+}
+#decryption h5{
+    font-size: 40px;
+    font-weight: 500;
+    color: white;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+#decryption textarea{
+    width: 1548px;
+    height: 376px;
+    border: 1px solid #343434;
+    padding: 10px;
+    font-size: 50px;
+    margin-bottom: 50px;
+}
+#decryption input{
+    width: 1548px;
+    height: 100px;
+    border: 1px solid #343434;
+    padding: 10px;
+    font-size: 50px;
+    margin-bottom: 50px;
+}
+#decryption button{
+    display: flex;
+    align-items: center;
+    color: grey;
+    background-color: black;
+    border: none;
+    width: 100%;
+    justify-content: center;
+    font-size: 50px;
+    padding: 10px;
+    border-radius: 10px;
+    color: #eee;
+    font-size: 50px;
+    cursor: pointer;
+}
+#decrypt-button span{
+    display: flex;
+    margin-right: 10px;
+}  
+#decrypt-button span img{
+    height: 50px;
+}
+#decryption #decryptedinput-1{
+    width: 1548px;
+    height: 200px;
+}
+
+
+
+
+
+</style>        
+</body>
+</html>

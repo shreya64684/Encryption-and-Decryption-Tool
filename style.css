@@ -1,0 +1,91 @@
+*{
+    margin: 0;
+    padding:0;
+    box-sizing: border-box;
+    font-family: gilroy;
+
+}
+html,body{
+    height: 100%;
+    width: 100%;
+}
+#main{
+    height: 100%;
+    width: 100%;
+    background-color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+#main>h1{
+    font-family: monospace;
+    color: white;
+    font-size: 48px;
+    display: flex;
+    align-items: center;
+}
+#main>h1>span{
+    margin: 0 15px;
+    display: flex;
+    align-items: center;
+}
+#main>h1>span>img{
+    height: 50px;
+    color: white;
+    transition: 0.3s ease;
+}
+#main>h3{
+    color: aliceblue;
+    padding-top: 100px;
+    font-size: 40px;
+    padding-bottom: 30px;
+}
+#main>ul>li>a{
+    color: yellow;
+    font-size: 40px;
+}
+#endec-div{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: black;
+    font-family: monospace;
+}
+#endec-div h4{
+    color: white;
+    
+}
+#main>#endec-div h3{
+    font-size: 40px;
+    color: whitesmoke;
+    font-family: monospace;
+    display: flex;
+    align-items: center;
+    border-radius: 8px;
+    font-weight: 500;
+}
+#enc-btn{
+    background-color: #333;
+    display:block;
+    padding: 8px 8px;
+}
+
+#enc-btn>span img{
+    width: 40px;
+    height: 40px;
+    
+}
+#dec-btn {
+    background-color: #333;
+    display: block;
+    padding: 8px 8px;
+}
+#dec-btn img{
+    width: 40px;
+    height: 40px;
+}
+#link{
+    color: yellowgreen;
+}
+
